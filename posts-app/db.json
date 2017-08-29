@@ -1,0 +1,48 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Learn about APIs",
+      "authorId": 1
+    },
+    {
+      "id": 2,
+      "title": "Learn Front End Web Development",
+      "authorId": 2
+    },
+    {
+      "id": 3,
+      "title": "Mastering React Native",
+      "authorId": 3
+    },
+    {
+      "title": "JavaScript 101",
+      "authorId": 1,
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Eric Masiello",
+      "email": "eric.j.masiello@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Erika Lewis",
+      "email": "erikalewis289@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Jacob Friedman",
+      "email": "jfriedman29@gmail.com"
+    }
+  ]
+}
