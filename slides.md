@@ -15,9 +15,7 @@
 
 ### Buy Me :)
 
-<img src="img/mastering-react-native.png" style="max-height: 450px; border-width: 0; box-shadow: none;" />
-
-<a target="_blank" href="https://www.amazon.com/gp/product/1785885782/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1785885782&linkCode=as2&tag=ericmasiello-20&linkId=0b797f6960a050d6567fd26505307fec">Mastering React Native</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=ericmasiello-20&l=am2&o=1&a=1785885782" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+[![Mastering React Native](img/mastering-react-native.png)](https://www.amazon.com/gp/product/1785885782/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1785885782&linkCode=as2&tag=ericmasiello-20&linkId=0b797f6960a050d6567fd26505307fec)
 
 ---
 
@@ -25,7 +23,8 @@
 
 1. Overview of APIs & REST
 2. Data over Web APIs
-3. Planning an API with our mock app
+3. Clients, Servers, and HTTP
+4. Planning an API with our mock app
 
 ---
 
@@ -103,14 +102,14 @@ Note:
 
 --
 
-### REST Conventions
+### Example REST Conventions for `users`
 
 ```plain
 GET     /api/users            Return list of all users
-GET     /api/users/{userId}   Return a single user
-PUT     /api/users/{userId}   Update a single user
+GET     /api/users/123        Return a user with ID 123
+PUT     /api/users/123        Update user with ID 123
 POST    /api/users            Create a brand new user
-DELETE  /api/users/{userId}   Delete a user
+DELETE  /api/users/123        Delete user with ID 123
 ```
 
 --
@@ -135,12 +134,13 @@ JavaScript Object Notation
 * Most common way respresenting data in APIs
 * Does **NOT** require JavaScript
 * Composed of a series of key/value pairs
-```
+```plain
   {
     "firstName": "Eric",
     "lastName": "Masiello",
     "email": "eric.j.masiello@gmail.com",
-    "yearsTeaching": 3
+    "yearsTeaching": 3,
+    "isActive": true
   }
 ```
 Keys are on the left, values on the right
@@ -149,19 +149,20 @@ Keys are on the left, values on the right
 
 ### JSON Syntax
 
-* Each entity is wrapped in a `{` ... `}`
+* Each entity (object) is wrapped in a `{` ... `}`
 * Keys are always wrapped in double quotes
-* Keys and values are separated by a `:`
-* Every value, *except the last*, should be followed a `,`
+* Keys and values are separated by a colon
+* Every value, *except the last*, should be followed by a comma
 * String values are wrapped in double quotes
-* Number values are not wrapped in double quotes
+* Numbers and booleans values are not wrapped in double quotes
 
-```
+```plain
   {
     "firstName": "Eric",
     "lastName": "Masiello",
     "email": "eric.j.masiello@gmail.com",
-    "yearsTeaching": 3
+    "yearsTeaching": 3,
+    "isActive": true
   }
 ```
 
@@ -169,19 +170,21 @@ Keys are on the left, values on the right
 
 ### Returning Multiple of JSON Records
 Use square brackets to represent a list of records
-```
+```plain
   [
     {
       "firstName": "Eric",
       "lastName": "Masiello",
       "email": "eric.j.masiello@gmail.com",
-      "yearsTeaching": 3
+      "yearsTeaching": 3,
+      "isActive": true
     },
     {
       "firstName": "Hyun",
       "lastName": "Kim",
       "email": "hkim@me.com",
-      "yearsTeaching": 8
+      "yearsTeaching": 8,
+      "isActive": false
     }
   ]
 ```
@@ -219,22 +222,22 @@ http://localhost:3000/authors
 2. What are the ids of the posts authored by Eric Masiello
 3. Create a comment for post titled "Learn about APIs"
 4. Create a new author with your name and email
-5. Update the email address for Erika Lewis to be "erikalewis889@gmail.com"
+5. Update Erika's email to "erikalewis889@gmail.com"
 
 ---
 
 ## Planning an API
 
 --
-### Mock App AccessEats
+### Mock App: AccessEats
 Imagine you wanted to...
 * Create an app that serves the disability community
 * Finds accessible restuarants in your local city
 * Focuses on the following accomodations:
-  1. wheelchair access
-  2. minimal background noise
-  3. braille menus
-  4. ample lighting
+  1. Wheelchair access
+  2. Minimal background noise
+  3. Braille menus
+  4. Ample lighting
 
 --
 
@@ -311,19 +314,19 @@ Note:
 
 ---
 
-## Clients and Servers
+## Clients, Servers, and HTTP
 
 --
 
 ### What's a server?
 
-Its a computer.
+It's a computer.
 
 --
 
 ### What's a client?
 
-Its a computer :)
+It's a computer :)
 
 
 --
@@ -333,6 +336,32 @@ Its a computer :)
 * Clients request data from a server
 * Servers serve data to clients
 * Computers can act as *both* clients and servers
+
+--
+
+## HTTP
+
+A protocol (rules) that determines how web pages, images, and other data are sent from one place to another
+
+<img src="img/clientserver.png" alt="Client Server diagram" style="background-color: white">
+
+--
+
+## HTTP Client
+
+HTTP clients make HTTP requests to web servers and consume HTTP responses from web servers.
+
+Examples:
+
+* Browsers: Chrome, Firefox and Safari.
+* Command Line programs: curl and wget.
+
+--
+
+## HTTP (Web) Server
+
+* Receive HTTP requests and generate HTTP responses
+* Can act as middlemen, passing HTTP requests on to another HTTP server
 
 --
 
@@ -353,11 +382,85 @@ Its a computer :)
                             ↓          ↓
                 [Yelp Search API]   [Yelp Review API]
 ```
+1. Who are the clients?
+2. Who are the servers?
+3. How do they communicate?
+
 Note: 
 * This communication all happens over HTTP using the different methods GET, PUT, POST, DELETE, PATCH
+
+--
+
+## HTTP Step by Step
+
+1. A client sends an HTTP request to an HTTP server running on a remote machine
+2. The server processes the HTTP request
+3. The server either responds to the request itself or passes it along to another server to handle
+4. A server generates a response and sends it back to the client
+5. The client processes the response (e.g. browser parses some HTML and displays a web page)
+
+--
+
+## Breaking down a request
+
+![url](img/url.png)
+
+--
+
+## HTTP Request Verbs
+
+Look familiar?
+
+```plain
+GET         Retrieve some data
+DELETE      Delete some data
+PUT/PATCH   Update some existing data
+POST        Create some new data
+```
+
+* `PUT`, `PATCH`, and `POST`s are often accompanied with additional data called a **body** or **payload**
+* Payloads are typically in the form of JSON
+
+```plain
+  {
+    "firstName": "Eric",
+    "lastName": "Masiello",
+    "email": "eric.j.masiello@gmail.com",
+    "yearsTeaching": 4
+  }
+```
+
+--
+
+## HTTP Responses
+
+* Responses *may* contain data
+* *Must* return a status code
+
+|Code|Reason|
+|:---|:-----|
+|200| OK
+|301| Moved Permanently
+|302| Moved Temporarily
+|307| Temporary Redirect
+|400| Bad Request
+|403| Forbidden
+|404| Not Found
+|500| Internal Server Error
+
+[Status Codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+
+--
+
+## HTTP Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TtCqklYj-7I" frameborder="0" allowfullscreen></iframe>
+
+(Using Google Chrome's Developer Tools)
+
 ---
 
-## Let's design our AccessEATS API endpoints
+## Let's design our AccessEATS API
 
 --
 
@@ -384,6 +487,50 @@ Note:
 3. If there's data that needs to be submitted, provide an example JSON payload
 
 `http://accesseats.com/api/...`
+
+---
+
+# Bonus: Coding an API
+
+--
+
+![GeneralAssemb.ly](img/exercise_icon_md.png)
+
+## Scenario
+
+You work on a team of developers. Your front end (client) team finished their work and went on vacation. Your back end (web server) team did *most* of their work but doesn't know much about REST.
+
+--
+
+![GeneralAssemb.ly](img/exercise_icon_md.png)
+
+## Pretask
+
+1. Open a code editor (e.g. Sublime, VS Code, Atom)
+2. Download and unzip https://goo.gl/SH5viw
+3. Put unzipped folder on your desktop
+4. Open Terminal app
+
+```bash
+cd ~/Desktop/access-eats
+npm run start
+```
+
+--
+
+![GeneralAssemb.ly](img/exercise_icon_md.png)
+
+## Task
+
+1. Open in Chrome http://localhost:1337/
+2. Open Chrome Dev Tools
+  * Right click on page
+  * Click Inspect
+  * Click on Network tab
+3. Click around on page - why so many 404's?
+4. In your editor, open `/access-eats/server/routes/api.js`
+
+
 
 
 ---
