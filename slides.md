@@ -1,3 +1,10 @@
+# How to work with and build APIs
+
+### Before we get started...
+
+* Install Node JS @ v8.4.0 https://nodejs.org/
+* Install Google Chrome https://www.google.com/chrome/browser/
+* Install Postman from the Google Chrome Store https://goo.gl/VZ1xD2
 
 # How to work with and build APIs
 
@@ -28,13 +35,6 @@
 
 ---
 
-### Before we get started...
-
-* Install Node JS @ v8.4.0 https://nodejs.org/
-* Install Google Chrome https://www.google.com/chrome/browser/
-* Install Postman from the Google Chrome Store https://goo.gl/VZ1xD2
----
-
 ## What's an API?
 
 * Application Programming Interface
@@ -42,7 +42,6 @@
 * APIs expose data and functionality that are usable by other programs while keeping some data & code private
 
 ***This* data is public and *this* is how you access it**
-
 
 --
 
@@ -180,9 +179,9 @@ Use square brackets to represent a list of records
       "isActive": true
     },
     {
-      "firstName": "Hyun",
+      "firstName": "Eric",
       "lastName": "Kim",
-      "email": "hkim@me.com",
+      "email": "ekim@me.com",
       "yearsTeaching": 8,
       "isActive": false
     }
@@ -207,8 +206,6 @@ npm run start
 --
 
 ### Part 2
-
-![GeneralAssemb.ly](img/code_along.png)
 
 Using Postman and these endpoints:
 
@@ -502,8 +499,6 @@ You work on a team of developers. Your front end (client) team finished their wo
 
 --
 
-![GeneralAssemb.ly](img/exercise_icon_md.png)
-
 ## Pretask
 
 1. Open a code editor (e.g. Sublime, VS Code, Atom)
@@ -517,8 +512,6 @@ npm run start
 ```
 
 --
-
-![GeneralAssemb.ly](img/exercise_icon_md.png)
 
 ## Task
 
