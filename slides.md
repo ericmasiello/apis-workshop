@@ -203,6 +203,11 @@ cd ~/Desktop/posts-app
 npm run start
 ```
 
+```bash
+cd %userprofile%\Desktop\posts-app
+npm run start
+```
+
 --
 
 ### Part 2
@@ -508,6 +513,11 @@ You work on a team of developers. Your front end (client) team finished their wo
 
 ```bash
 cd ~/Desktop/access-eats
+npm run start
+```
+
+```bash
+cd %userprofile%\Desktop\access-eats
 npm run start
 ```
 
