@@ -1,10 +1,12 @@
-# How to work with and build APIs
+### How to work with and build APIs
+## Before we get started:
 
-### Before we get started...
-
+* Install a code editor (e.g. Visual Studio Code, Atom, or Sublime Text)
 * Install Node JS @ v8.4.0 https://nodejs.org/
 * Install Google Chrome https://www.google.com/chrome/browser/
 * Install Postman from the Google Chrome Store https://goo.gl/VZ1xD2
+
+---
 
 # How to work with and build APIs
 
