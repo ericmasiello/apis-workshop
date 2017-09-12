@@ -261,6 +261,13 @@ http://localhost:3000/authors
 
 ---
 
+# Bathroom Break 💩
+
+Take 5.
+
+---
+
+
 ## Planning an API
 
 --
@@ -319,6 +326,7 @@ Note:
 Note:
 * Facebook you can see things like your posts, relationships, things you've liked, places you've checked into, etc.
 * Yelp can see reviews, services, restaurants, bars, cafes, etc.
+* HootSuite is an app that uses Twitter's API
 
 --
 
