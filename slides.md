@@ -2,7 +2,7 @@
 ## Before we get started:
 
 * Install a code editor (e.g. Visual Studio Code, Atom, or Sublime Text)
-* Install Node JS @ v8.4.0 https://nodejs.org/
+* Install Node JS @ v8.5.0 https://nodejs.org/
 * Install Google Chrome https://www.google.com/chrome/browser/
 * Install Postman from the Google Chrome Store https://goo.gl/VZ1xD2
 
@@ -28,12 +28,16 @@
 
 ---
 
+### This is pretty technical.
+
+---
+
 ## Agenda
 
 1. Overview of APIs & REST
 2. Data over Web APIs
-3. Clients, Servers, and HTTP
-4. Planning an API with our mock app
+3. Planning an API
+4. Clients, Servers, and HTTP
 
 ---
 
@@ -96,6 +100,18 @@ Note:
 
 --
 
+### HTTP verbs
+
+|Verb|Description|
+|:---|:-----|
+|GET| Gimme data
+|PUT| Replace existing data with new data
+|PATCH| Update existing data with this new piece of data
+|POST| Create some new data
+|DELETE| Delete some data
+
+--
+
 ### REST
 **RE**presentational **S**tate **T**ransfer
 * A convention for how to predictably compose endpoints
@@ -119,7 +135,7 @@ DELETE  /api/users/123        Delete user with ID 123
 
 * An API is a way to expose and consume data from users
 * A Web API is made up of endpoints
-* Endpoints are composed of a web path and an HTTP verb
+* Endpoints are composed of a path (URL) and an HTTP verb
 * REST defines conventions for how to configure endpoints
 
 ---
@@ -169,7 +185,7 @@ Keys are on the left, values on the right
 
 --
 
-### Returning Multiple of JSON Records
+### Returning Multiple JSON Records
 Use square brackets to represent a list of records
 ```plain
   [
@@ -191,28 +207,46 @@ Use square brackets to represent a list of records
 ```
 --
 
+## Postman
+
+* Graphical app for playing with APIs
+* Allows you to specify the HTTP verb and path
+* Easy to read and send JSON data
+
+--
+
 ### Part 1
 
 ![GeneralAssemb.ly](img/code_along.png)
 
 1. Open Postman
-2. Download and unzip https://goo.gl/vKwMYC
-3. Put unzipped folder on your desktop
-4. Open Terminal app
+2. Go to https://goo.gl/j1w5bw
+  * Click "Clone or Download"
+  * Click "Download Zip"
+3. Unzip/extract the folder to your desktop
+
+--
+### Part 2
+
+If you're on a Mac, open **Terminal** app
 
 ```bash
-cd ~/Desktop/posts-app
+cd ~/Desktop/apis-workshop-sample-master
+npm install
 npm run start
 ```
 
+If you're on Windows, open **Command Prompt**
+
 ```bash
-cd %userprofile%\Desktop\posts-app
+cd %userprofile%\Desktop\apis-workshop-sample-master
+npm install
 npm run start
 ```
 
 --
 
-### Part 2
+### Part 3
 
 Using Postman and these endpoints:
 
@@ -224,9 +258,6 @@ http://localhost:3000/authors
 
 1. Who authored the post "Mastering React Native"
 2. What are the ids of the posts authored by Eric Masiello
-3. Create a comment for post titled "Learn about APIs"
-4. Create a new author with your name and email
-5. Update Erika's email to "erikalewis889@gmail.com"
 
 ---
 
@@ -234,14 +265,14 @@ http://localhost:3000/authors
 
 --
 ### Mock App: AccessEats
+
 Imagine you wanted to...
 * Create an app that serves the disability community
 * Finds accessible restuarants in your local city
-* Focuses on the following accomodations:
-  1. Wheelchair access
-  2. Minimal background noise
-  3. Braille menus
-  4. Ample lighting
+* Allows users to rate on the following accomodations:
+  1. Wheelchair Access
+  2. Hard of Hearing/Deaf
+  3. Low Vision/Blind
 
 --
 
@@ -347,7 +378,7 @@ It's a computer :)
 
 A protocol (rules) that determines how web pages, images, and other data are sent from one place to another
 
-<img src="img/clientserver.png" alt="Client Server diagram" style="background-color: white">
+<img src="img/clientserver.png" alt="Client Server diagram" style="background-color: white; max-height: 350px">
 
 --
 
@@ -391,7 +422,7 @@ Examples:
 3. How do they communicate?
 
 Note: 
-* This communication all happens over HTTP using the different methods GET, PUT, POST, DELETE, PATCH
+* This communication all happens over HTTP using the different verbs GET, PUT, POST, DELETE, PATCH
 
 --
 
@@ -405,15 +436,9 @@ Note:
 
 --
 
-## Breaking down a request
-
-![url](img/url.png)
-
---
-
 ## HTTP Request Verbs
 
-Look familiar?
+Remember these?
 
 ```plain
 GET         Retrieve some data
@@ -436,19 +461,15 @@ POST        Create some new data
 
 --
 
-## HTTP Responses
-
-* Responses *may* contain data
-* *Must* return a status code
+## (A few) HTTP Responses
 
 |Code|Reason|
 |:---|:-----|
 |200| OK
+|201| Created
 |301| Moved Permanently
 |302| Moved Temporarily
-|307| Temporary Redirect
 |400| Bad Request
-|403| Forbidden
 |404| Not Found
 |500| Internal Server Error
 
@@ -461,6 +482,22 @@ POST        Create some new data
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TtCqklYj-7I" frameborder="0" allowfullscreen></iframe>
 
 (Using Google Chrome's Developer Tools)
+
+--
+
+![GeneralAssemb.ly](img/code_along.png)
+
+Continue with APIs Workshop Sample app using Postman:
+
+```plain
+http://localhost:3000/posts
+http://localhost:3000/comments
+http://localhost:3000/authors
+```
+
+1. Create a comment for the post titled "Learn about APIs"
+2. Create a new author with your name and email
+3. Update Erika's email to "erikalewis889@gmail.com"
 
 ---
 
@@ -509,17 +546,30 @@ You work on a team of developers. Your front end (client) team finished their wo
 ## Pretask
 
 1. Open a code editor (e.g. Sublime, VS Code, Atom)
-2. Download and unzip https://goo.gl/SH5viw
-3. Put unzipped folder on your desktop
-4. Open Terminal app
+2. Go to https://goo.gl/oiaSib
+  * Click "Clone or Download"
+  * Click "Download Zip"
+3. Unzip/extract the folder to your desktop
+
+--
+
+### Pretask continued...
+
+If you're on a Mac, open **Terminal** app
 
 ```bash
-cd ~/Desktop/access-eats
+cd ~/Desktop/access-eats-student-assignment
+npm install
+npm run build
 npm run start
 ```
 
+If you're on Windows, open **Command Prompt**
+
 ```bash
-cd %userprofile%\Desktop\access-eats
+cd %userprofile%\Desktop\access-eats-student-assignment
+npm install
+npm run build
 npm run start
 ```
 
@@ -533,10 +583,7 @@ npm run start
   * Click Inspect
   * Click on Network tab
 3. Click around on page - why so many 404's?
-4. In your editor, open `/access-eats/server/routes/api.js`
-
-
-
+4. In your editor, open `/access-eats-student-assignment/server/routes/api.js`
 
 ---
 # Thank you!
